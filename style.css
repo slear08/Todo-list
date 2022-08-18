@@ -2,4 +2,26 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+    color: whitesmoke;
+}
+body{
+    background-color: #B2967D;
+    min-height: 100vh;
+}
+li{
+    list-style: none;
+}
+main,
+header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.todo-item{
+    display: flex;
+}
+
+.fa-circle-plus{
+    color: black;
 }

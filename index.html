@@ -9,28 +9,29 @@
     <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-    <header>My TODO-LIST</header>
-    <main>
-        <form>
-            <input type="text" class="todo-input" placeholder="Enter your todo-list" />
-            <button class="todo-button" type="submit">
-                <i class="fa-solid fa-circle-plus"></i>
-            </button>
-        </form>
-        <div class="todo-list">
-            <div class="todo-item">
-                <li>play</li>
-                <span><i class="fas fa-check"></i></span>
-                <span><i class="fas fa-trash"></i></span>
-            </div>
-            <div class="todo-item">
-                <li>excercise</li>
-                <span><i class="fas fa-check"></i></span>
-                <span><i class="fas fa-trash"></i></span>
-            </div>
+    <header>
+        <div class="profile-container">
+            <img src="./profile.jpg" alt="my-profile">
         </div>
-
-    </main>
+        <h1>SLEAR MENDOZA</h1>
+    </header>
+    <form>
+        <input type="text" class="todo-input" placeholder="Enter your todo-list" />
+        <button class="todo-button" type="submit">
+            <i class="fa-solid fa-circle-plus"></i>
+        </button>
+    </form>
+    <div class="todo-list">
+        <ul class="todos">
+            <!-- <div class="todo-item">
+                <li>play</li>
+                <button><span><i class="complete-btn"></i></span></button>
+                <button><span><i class="trash-btn"></i></span></button>
+            </div> -->
+            
+        </ul>
+    </div>
     
 </body>
+<script src="./index.js"></script>
 </html>

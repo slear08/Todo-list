@@ -37,6 +37,17 @@ header{
     list-style: none;
 }
 
+@keyframes append-animate {
+	from {
+		transform: scaleY(0);
+		opacity: 0;
+	}
+	to {
+		transform: scaleY(1);
+		opacity: 1;
+	}
+}
+
 .todo-item{
     display: flex;
     justify-content: space-between;
@@ -46,7 +57,9 @@ header{
     border: solid 2px rgba(85, 84, 84, 0.811);
     border-radius: 20px;
     overflow: hidden;
-
+    transition: all .8s ease;
+    transform-origin: 50% 0;
+	animation: append-animate .3s linear;
 }
 .todo-item li{
     flex: 1;
@@ -78,6 +91,7 @@ header{
     background-color:  rgb(11, 212, 162);
     border: solid 2px rgba(85, 84, 84, 0.811);
     border-radius: 100%;
+    
 }
 .todo-button i{
     font-size: 1.9rem;
@@ -110,5 +124,15 @@ header{
 }
 .fa-trash,
 .fa-check {
-  pointer-events: none;
+    pointer-events: none;
+}
+
+
+.remove-todo{
+    transform: translateY(10rem) rotateZ(20deg);
+    opacity: 0;
+}
+.completed-todo{
+    text-decoration: line-through;
+    opacity: 0.8;
 }

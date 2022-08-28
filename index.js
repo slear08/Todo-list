@@ -1,50 +1,84 @@
-const todoInput = document.querySelector('.todo-input');
-const todoButton = document.querySelector('.todo-button');
-const todos = document.querySelector('.todos');
+window.addEventListener('load', () => {
 
-todoButton.addEventListener('click', addTodoList);
-todos.addEventListener('click', completeAndDeleteTodos);
-function addTodoList(e){
-    e.preventDefault()
+    getDataFromLocalStorage();
+    todos = getDataFromLocalStorage();
 
-    const createElement = document.createElement('div');
-    createElement.classList.add('todo-item'); 
+    const todoForm = document.querySelector('[data-todo-form]');
+    userNameInput = document.querySelector('[data-user-name]');
 
-    const createTodo = document.createElement('li');
-    createTodo.innerText = todoInput.value;
-    createTodo.classList.add('todo');
-
-    const completedButton = document.createElement("button");
-    completedButton.innerHTML = `<i class="fas fa-check"></i>`;
-    completedButton.classList.add("complete-btn");  
-
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = `<i class="fas fa-trash"></i>`;
-    deleteButton.classList.add("trash-btn");  
-
-    createElement.appendChild(createTodo);
-    createElement.appendChild(completedButton);
-    createElement.appendChild(deleteButton);
+    const username = localStorage.getItem('username') || '';
     
 
-    todos.appendChild(createElement);
-    todoInput.value = "";
+    userNameInput.value = username;
+    
+
+    userNameInput.addEventListener('change', (e) => {
+		localStorage.setItem('username', e.target.value.toUpperCase());
+	})
+
+    todoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const todo = {
+            id: new Date().getTime().toString(),
+            name: e.target.elements.todoInput.value //GET THE VALUE ON THE INPUT FIELDS
+        }
+
+        todos.push(todo);
+        setDataFromLocalStorage();
+        displayTodo()
+
+       	// Reset the form
+		e.target.reset();
+
+    });
+
+    displayTodo();
+});
+
+function setDataFromLocalStorage(){
+    return localStorage.setItem('todos', JSON.stringify(todos));
+}
+function getDataFromLocalStorage(){
+    return JSON.parse(localStorage.getItem('todos')) || [];
+}
+function clearElement(element){
+    while(element.firstChild){
+        element.removeChild(element.firstChild);
+    }
+
 }
 
-function completeAndDeleteTodos(e){
-    const compAndDel = e.target;
+function displayTodo(){
 
-    if(compAndDel.classList.contains("trash-btn")){
-        const toDelete = compAndDel.parentElement;
-        toDelete.classList.add("remove-todo");
+    const todoList = document.querySelector('[data-todo]');
+    clearElement(todoList);
+    
+    todos.forEach(todo => {
+        const createElement = document.createElement('div');
+        createElement.classList.add('todo-item'); 
         
-        toDelete.addEventListener("transitionend", (e)=>{
-            toDelete.remove();
-        })
-    }
-    if(compAndDel.classList.contains("complete-btn")){
-        const toComplete = compAndDel.parentElement;
-        toComplete.classList.toggle("completed-todo");
-    }
+        const createTodo = document.createElement('li');
+        createTodo.innerText = todo.name;
+        createTodo.classList.add('todo');
+        
+        const completedButton = document.createElement("button");
+        completedButton.innerHTML = `<i class="fas fa-check"></i>`;
+        completedButton.classList.add("complete-btn");  
+        
+        const deleteButton = document.createElement("button");
+        deleteButton.innerHTML = `<i class="fas fa-trash"></i>`;
+        deleteButton.classList.add("trash-btn");  
+        
+        createElement.appendChild(createTodo);
+        createElement.appendChild(completedButton);
+        createElement.appendChild(deleteButton);
+        todoList.appendChild(createElement);
+        
+    })
 
 }
+
+
+
+

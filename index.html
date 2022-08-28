@@ -13,25 +13,59 @@
         <div class="profile-container">
             <img src="./profile.jpg" alt="my-profile">
         </div>
-        <h1>SLEAR MENDOZA</h1>
+        <input type="text" placeholder="Enter your name here..." data-user-name>
     </header>
-    <form>
-        <input type="text" class="todo-input" placeholder="Enter your todo-list" />
-        <button class="todo-button" type="submit">
-            <i class="fa-solid fa-circle-plus"></i>
-        </button>
-    </form>
-    <div class="todo-list">
-        <ul class="todos">
-            <!-- <div class="todo-item">
-                <li>play</li>
-                <button><span><i class="complete-btn"></i></span></button>
-                <button><span><i class="trash-btn"></i></span></button>
-            </div> -->
-            
-        </ul>
-    </div>
     
+    <section class="main-content">
+        <div class="todo-category">
+            <h1>CATEGORIES</h1>
+            <form data-todo-form>
+                <input type="text"
+                        name="todoInput"
+                        class="todo-input" 
+                        placeholder="Enter your todo-list"
+                        />
+                <button class="todo-button" type="submit" data-todo-button >
+                    <i class="fa-solid fa-circle-plus"></i>
+                </button>
+            </form>
+            <div class="todo-list">
+                <ul class="todos" data-todo>
+                    <!-- <div class="todo-item">
+                        <li>eat</li>
+                        <button class="complete-btn"><i class="fas fa-check"></i></button>
+                        <button class="trash-btn" data-delete-btn><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="todo-item">
+                        <li>sleep</li>
+                        <button class="complete-btn"><i class="fas fa-check"></i></button>
+                        <button class="trash-btn"><i class="fas fa-trash"></i></button>
+                    </div> -->
+                </ul>
+            </div>
+            
+        </div>
+        <div class="todo-task">
+            <!-- <ul class="task">
+                <div class="task-item">
+                    <li>play</li>
+                    <button><span><i class="complete-btn"></i></span></button>
+                    <button><span><i class="trash-btn"></i></span></button>
+                </div>
+                <div class="task-item">
+                    <li>read</li>
+                    <button><span><i class="complete-btn"></i></span></button>
+                    <button><span><i class="trash-btn"></i></span></button>
+                </div>
+                <div class="task-item">
+                    <li>ride</li>
+                    <button><span><i class="complete-btn"></i></span></button>
+                    <button><span><i class="trash-btn"></i></span></button>
+                </div>
+            </ul>-->
+        </div> 
+    </section>
+    <script src="./index.js"></script>
 </body>
-<script src="./index.js"></script>
+
 </html>
